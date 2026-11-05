@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         hostname: "dummyimage.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "virtualwardrobe-media-bucket.s3.ap-south-1.amazonaws.com",
+        pathname: "/**",
+      },
     ],
   },
 };
