@@ -20,7 +20,7 @@ export default function Footer() {
               <Link href={"/"} className="-m-1.5 p-1.5">
                 <Image
                   alt="Logo"
-                  src="https://storage.googleapis.com/virtual-wardrobe-media-bucket/vw-logo-3.png"
+                  src="https://virtualwardrobe-media-bucket.s3.ap-south-1.amazonaws.com/vw-logo.png"
                   width={150}
                   height={150}
                   unoptimized
