@@ -35,7 +35,7 @@ const filters = [
     options: [
       { value: "casual", label: "Casual", checked: true },
       { value: "formal", label: "Formal", checked: false },
-      { value: "sport", label: "Sport", checked: false },
+      { value: "sports", label: "Sports", checked: false },
     ],
   },
   {
@@ -78,7 +78,7 @@ export default function Wardrobe() {
   const handleFilterChange = (
     sectionId: string,
     value: string,
-    checked: boolean
+    checked: boolean,
   ) => {
     setSelectedFilters((prev) => {
       const values = new Set(prev[sectionId] || []);
@@ -169,7 +169,7 @@ export default function Wardrobe() {
                                       handleFilterChange(
                                         section.id,
                                         option.value,
-                                        e.target.checked
+                                        e.target.checked,
                                       )
                                     }
                                     id={`filter-${section.id}-${optionIdx}`}
@@ -280,13 +280,13 @@ export default function Wardrobe() {
                             <input
                               value={option.value}
                               checked={selectedFilters[section.id]?.includes(
-                                option.value
+                                option.value,
                               )}
                               onChange={(e) =>
                                 handleFilterChange(
                                   section.id,
                                   option.value,
-                                  e.target.checked
+                                  e.target.checked,
                                 )
                               }
                               id={`filter-${section.id}-${optionIdx}`}
