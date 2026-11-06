@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
 
+function isAllowedImageHost(hostname: string) {
+  if (hostname === "storage.googleapis.com") {
+    return true;
+  }
+
+  return /^(?:[a-z0-9][a-z0-9.-]*\.)?s3(?:[.-][a-z0-9-]+)*\.amazonaws\.com(?:\.cn)?$/.test(
+    hostname,
+  );
+}
+
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const imageUrl = requestUrl.searchParams.get("url");
@@ -18,10 +28,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ detail: "Invalid image url." }, { status: 400 });
   }
 
-  if (
-    parsedUrl.protocol !== "https:" ||
-    parsedUrl.hostname !== "storage.googleapis.com"
-  ) {
+  if (parsedUrl.protocol !== "https:" || !isAllowedImageHost(parsedUrl.hostname)) {
     return NextResponse.json(
       { detail: "Unsupported image host." },
       { status: 400 },
