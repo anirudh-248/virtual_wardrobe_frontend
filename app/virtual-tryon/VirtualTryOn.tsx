@@ -6,7 +6,6 @@ import Loader from "../components/Loader";
 import ErrorModal from "../components/ErrorModal";
 import ConfirmModal from "../components/ConfirmModal";
 import SuccessModal from "../components/SuccessModal";
-import Link from "next/link";
 
 interface TryOnResult {
   id: string | number;
@@ -99,12 +98,18 @@ export default function VirtualTryOn() {
           Here are the clothes you have tried virtually.
         </p>
       </div>
-      <Link
-        href="/virtual-tryon/new"
-        className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-md bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-xs transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-auto"
+      <span
+        className="inline-flex w-full sm:w-auto"
+        title="This feature has been disabled."
       >
-        Conduct New Try-on
-      </Link>
+        <button
+          type="button"
+          disabled
+          className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-md bg-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-xs opacity-50 cursor-not-allowed sm:w-auto"
+        >
+          Conduct New Try-on
+        </button>
+      </span>
     </div>
   );
 
